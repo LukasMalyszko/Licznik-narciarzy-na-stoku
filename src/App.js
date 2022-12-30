@@ -1,29 +1,50 @@
+import React from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
-    </div>
-  );
+export class App extends React.Component {
+
+	constructor(props) {
+		super(props);
+		this.state = { 
+			count: 0
+		}
+	}
+
+	componentDidMount() {
+		this.setState({
+			count: this.state.count+15
+		});
+	}
+
+	add = () => {
+		this.setState({
+			count: this.state.count + 1
+		});
+	}
+
+	subtract = () => {
+		this.setState({
+			count: this.state.count - 1
+		});
+	}
+
+	render() {
+		return (
+      <div id="counter" style={{
+        'display': "flex",
+				'flexDirection': "row"}
+			}>
+				<button onClick={this.subtract} style={{backgroundColor: "red",
+				color: "white"}}>-</button>
+				<h3>{this.state.count} Narciarz(y) </h3>
+				<button onClick={this.add} style={{backgroundColor: "green",
+				color: "white"}}>+</button>
+			</div>
+			
+		);
+	}
 }
+
+
 
 export default App;
